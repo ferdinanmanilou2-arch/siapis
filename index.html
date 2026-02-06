@@ -1,53 +1,43 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIAPIS</title>
+  <meta charset="UTF-8">
+  <title>Dashboard SIAPIS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<style>
-body {
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#e3f0ff,#f6fbff);
-}
+<div class="container">
 
-header{
-  text-align:center;
-  padding:20px;
-  background:#0d6efd;
-  color:white;
-}
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>SIAPIS</h2>
 
-.dashboard{
-</a>
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:20px;
-  padding:20px;
-}
+    <a href="index.html">🏠 Dashboard</a>
 
-.menu{
-  background:white;
-  border-radius:20px;
-  text-align:center;
-  padding:20px;
-  text-decoration:none;
-  color:black;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  transition:0.2s;
+    <div class="menu">
+      📊 Data Master
+      <div class="submenu">
+        <a href="guru.html">👩‍🏫 Data Guru</a>
+        <a href="tendik.html">🧑‍💼 Data Tendik</a>
+        <a href="siswa.html">👨‍🎓 Data Siswa</a>
+      </div>
+    </div>
 
+    <a href="sarpras.html">🏫 Sarana & Prasarana</a>
+    <a href="ppdb.html">📝 PPDB</a>
+    <a href="admin.html">⚙️ Admin</a>
 
-<h1>SIAPIS</h1>
-<p>Sistem Informasi Administrasi & Profil Sekolah</p>
-</header>
+    <a href="#" class="logout">🚪 Logout</a>
+  </aside>
 
-<div class="dashboard"><<ul>
-  <li>🏠 Dashboard</li>
-  <li>👨‍🎓 Data Siswa</li>
-  <li>👩‍🏫 Data Guru</li>
-  <li>📝 PPDB</li>
-  <li>🏫 Sarana & Prasarana</li>
-  <li>📢 Pengumuman</li>
-  <li>📁 Arsip</li>
-  <li>⚙️ Pengaturan</li>
+  <!-- KONTEN -->
+  <main class="main">
+    <h1>Dashboard SIAPIS</h1>
+    <p>Selamat datang di Sistem Informasi SLBN Alor</p>
+  </main>
+
+</div>
+
+</body>
+</html>
