@@ -1,23 +1,3 @@
-<?php
-// ====== Handle Upload ======
-$message = '';
-if(isset($_POST['upload'])){
-    $menu = $_POST['menu'];
-    $target_dir = "uploads/";
-    $filename = basename($_FILES["fileToUpload"]["name"]);
-    $target_file = $target_dir . $menu . "_" . $filename;
-
-    if(move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
-        $message = "File berhasil diupload: $filename";
-    } else {
-        $message = "Gagal upload file.";
-    }
-}
-
-// ====== Determine Content to Show ======
-$content = isset($_GET['menu']) ? $_GET['menu'] : 'dashboard';
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -48,6 +28,9 @@ body { margin:0; font-family:Arial,sans-serif; background:#F3F4F6; }
 .btn-delete { background:#DC2626; color:white; }
 .btn-export { background:#10B981; color:white; }
 textarea { width:100%; }
+table { border-collapse: collapse; width:100%; }
+table, th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+th { background:#2563EB; color:white; }
 </style>
 </head>
 <body>
@@ -57,77 +40,30 @@ textarea { width:100%; }
   <!-- Sidebar -->
   <aside class="sidebar">
     <h2>SIAPIS</h2>
-    <a href="?menu=dashboard">🏠 Dashboard</a>
+    <a href="#" onclick="showContent('dashboard')">🏠 Dashboard</a>
 
     <div class="menu" onclick="toggleSubmenu('dataMasterSub')">📊 Data Master ▼</div>
     <div class="submenu" id="dataMasterSub">
-      <a href="?menu=dataGuru">👩‍🏫 Data Guru</a>
-      <a href="?menu=dataTendik">🧑‍💼 Data Tendik</a>
-      <a href="?menu=dataSiswa">👨‍🎓 Data Siswa</a>
+      <a href="#" onclick="showContent('dataGuru')">👩‍🏫 Data Guru</a>
+      <a href="#" onclick="showContent('dataTendik')">🧑‍💼 Data Tendik</a>
+      <a href="#" onclick="showContent('dataSiswa')">👨‍🎓 Data Siswa</a>
     </div>
 
     <div class="menu" onclick="toggleSubmenu('sarprasSub')">🏫 Sarana & Prasarana ▼</div>
     <div class="submenu" id="sarprasSub">
-      <a href="?menu=barangBergerak">📦 Barang Bergerak</a>
-      <a href="?menu=barangTidakBergerak">🏢 Barang Tidak Bergerak</a>
+      <a href="#" onclick="showContent('barangBergerak')">📦 Barang Bergerak</a>
+      <a href="#" onclick="showContent('barangTidakBergerak')">🏢 Barang Tidak Bergerak</a>
     </div>
 
     <div class="menu" onclick="toggleSubmenu('ppdbSub')">📝 PPDB ▼</div>
     <div class="submenu" id="ppdbSub">
-      <a href="?menu=dataPeserta">👶 Data Peserta Didik Terdaftar</a>
-      <a href="?menu=formulirPPDB">📝 Formulir Pendaftaran</a>
-      <a href="?menu=alurPPDB">➡️ Alur Pendaftaran</a>
+      <a href="#" onclick="showContent('dataPeserta')">👶 Data Peserta Didik Terdaftar</a>
+      <a href="#" onclick="showContent('formulirPPDB')">📝 Formulir Pendaftaran</a>
+      <a href="#" onclick="showContent('alurPPDB')">➡️ Alur Pendaftaran</a>
     </div>
 
     <div class="menu" onclick="toggleSubmenu('adminSub')">⚙️ Admin ▼</div>
     <div class="submenu" id="adminSub">
-      <a href="?menu=suratMasuk">📥 Surat Masuk</a>
-      <a href="?menu=suratKeluar">📤 Surat Keluar</a>
-      <a href="?menu=suratBerharga">💰 Surat Berharga</a>
-    </div>
-
-    <div class="menu" onclick="toggleSubmenu('profilSub')">📚 Profil Sekolah ▼</div>
-    <div class="submenu" id="profilSub">
-      <a href="?menu=visi">🌟 Visi</a>
-      <a href="?menu=misi">🎯 Misi</a>
-      <a href="?menu=tujuan">📌 Tujuan</a>
-      <a href="?menu=jejakDigital">💻 Jejak Digital</a>
-    </div>
-
-    <a href="#" class="logout">🚪 Logout</a>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="main">
-    <div class="card">
-      <?php if($message) echo "<p style='color:green;'>$message</p>"; ?>
-      
-      <?php if($content == 'dashboard'): ?>
-        <h1>Dashboard SIAPIS</h1>
-        <p>Selamat datang di Sistem Informasi SLBN Alor</p>
-
-      <?php else: ?>
-        <h3><?php echo ucwords(str_replace('_',' ',$content)); ?></h3>
-        <form action="" method="post" enctype="multipart/form-data">
-          <input type="file" name="fileToUpload" required>
-          <input type="hidden" name="menu" value="<?php echo $content; ?>">
-          <button type="submit" name="upload" class="btn btn-upload">Upload File</button>
-        </form>
-        <p>File yang diupload akan disimpan di folder <code>uploads/</code></p>
-        <p>Contoh download dummy:</p>
-        <a href="uploads/<?php echo $content; ?>_example.xlsx" class="btn btn-export">Excel</a>
-        <a href="uploads/<?php echo $content; ?>_example.pdf" class="btn btn-export">PDF</a>
-      <?php endif; ?>
-    </div>
-  </main>
-
-</div>
-
-<script>
-function toggleSubmenu(id){
-  document.getElementById(id).classList.toggle('show');
-}
-</script>
-
-</body>
-</html>
+      <a href="#" onclick="showContent('suratMasuk')">📥 Surat Masuk</a>
+      <a href="#" onclick="showContent('suratKeluar')">📤 Surat Keluar</a>
+      <a href="#" onclick="sh
