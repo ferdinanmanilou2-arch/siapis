@@ -19,6 +19,13 @@ body { margin:0; font-family:Arial,sans-serif; background:#F3F4F6; }
 .submenu.show { display:block; }
 .logout { background:#DC2626; text-align:center; }
 .logout:hover { background:#B91C1C; }
+<div class="menu" onclick="toggleSubmenu('profilSub')">🏫 Profil Sekolah ▼</div>
+<div class="submenu" id="profilSub">
+<a href="#" onclick="showContent('latar'); return false;">📖 Latar Belakang</a>
+<a href="#" onclick="showContent('visi'); return false;">👁️ Visi</a>
+<a href="#" onclick="showContent('misi'); return false;">🎯 Misi</a>
+<a href="#" onclick="showContent('tujuan'); return false;">🏁 Tujuan Sekolah</a>
+</div>
 
 /* Main */
 .main { flex:1; padding:30px; overflow:auto; }
