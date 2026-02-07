@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard SIAPIS</title>
+<title>SIAPIS SLBN ALOR</title>
 
 <style>
 body { margin:0; font-family:Arial,sans-serif; background:#F3F4F6; }
@@ -19,7 +19,12 @@ body { margin:0; font-family:Arial,sans-serif; background:#F3F4F6; }
 .submenu.show { display:block; }
 .logout { background:#DC2626; text-align:center; }
 .logout:hover { background:#B91C1C; }
-/* DASHBOARD BARU */
+
+/* Main */
+.main { flex:1; padding:30px; }
+.card { background:white; padding:20px; border-radius:10px; margin-top:20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+
+/* Dashboard */
 .dashboard {
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -40,191 +45,65 @@ transition:0.3s;
 transform:translateY(-5px);
 }
 
-.menu-card a {
-text-decoration:none;
-color:#333;
-}
-
 .icon {
 font-size:40px;
 margin-bottom:10px;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="container"><main class="dashboard">
+<div class="container">
 
-<div class="menu-card">
-<a href="latarbelakang.html">
-<div class="icon">📘</div>
-<p>Latar Belakang</p>
-</a>
-</div>
-
-<div class="menu-card">
-<a href="visi.html">
-<div class="icon">🎯</div>
-<p>Visi & Misi</p>
-</a>
-</div>
-
-<div class="menu-card">
-<a href="ppdb.html">
-<div class="icon">📝</div>
-<p>PPDB</p>
-</a>
-</div>
-
-<div class="menu-card">
-<a href="admin.html">
-<div class="icon">⚙️</div>
-<p>Admin</p>
-</a>
-</div>
-
-</main>
-<!-- Sidebar -->
-<aside class="sidebar"><a onclick="showContent('latar')">📖 Latar Belakang</a>
+<aside class="sidebar">
+<h2>SIAPIS</h2>
+<a onclick="showContent('dashboard')">🏠 Dashboard</a>
+<a onclick="showContent('latar')">📖 Latar Belakang</a>
 <a onclick="showContent('visi')">👁️ Visi</a>
 <a onclick="showContent('misi')">🎯 Misi</a>
 <a onclick="showContent('tujuan')">🏁 Tujuan</a>
-<h2>SIAPIS</h2>
-
-<div class="submenu" id="profilSub">
-<a href="#" onclick="showContent('latar'); return false;">📖 Latar Belakang</a>
-<a href="#" onclick="showContent('visi'); return false;">👁️ Visi</a>
-<a href="#" onclick="showContent('misi'); return false;">🎯 Misi</a>
-<a href="#" onclick="showContent('tujuan'); return false;">🏁 Tujuan Sekolah</a>
-</div>
-
-<a href="#" onclick="showContent('dashboard');return false;">🏠 Dashboard</a>
-  <a href="#" onclick="showContent('profil'); return false;">🏫 latar belakang </a>
-<div class="menu" onclick="toggleSubmenu('dataMasterSub')">📊 Data Master ▼</div>
-<div class="submenu" id="dataMasterSub">
-<a href="#" onclick="showContent('dataGuru');return false;">👩‍🏫 Data Guru</a>
-<a href="#" onclick="showContent('dataTendik');return false;">🧑‍💼 Data Tendik</a>
-<a href="#" onclick="showContent('dataSiswa');return false;">👨‍🎓 Data Siswa</a>
-</div>
-
-<div class="menu" onclick="toggleSubmenu('sarprasSub')">🏫 Sarana & Prasarana ▼</div>
-<div class="submenu" id="sarprasSub">
-<a href="#" onclick="showContent('barangBergerak');return false;">📦 Barang Bergerak</a>
-<a href="#" onclick="showContent('barangTidakBergerak');return false;">🏢 Barang Tidak Bergerak</a>
-</div>
-
-<div class="menu" onclick="toggleSubmenu('ppdbSub')">📝 PPDB ▼</div>
-<div class="submenu" id="ppdbSub">
-<a href="#" onclick="showContent('dataPeserta');return false;">👶 Data Peserta</a>
-<a href="#" onclick="showContent('formulirPPDB');return false;">📝 Formulir</a>
-<a href="#" onclick="showContent('alurPPDB');return false;">➡️ Alur</a>
-</div>
-
-<div class="menu" onclick="toggleSubmenu('adminSub')">⚙️ Admin ▼</div>
-<div class="submenu" id="adminSub">
-<a href="#" onclick="showContent('suratMasuk');return false;">📥 Surat Masuk</a>
-<a href="#" onclick="showContent('suratKeluar');return false;">📤 Surat Keluar</a>
-<a href="#" onclick="showContent('pengguna');return false;">👤 Manajemen User</a>
-</div>
-
-<a href="#" class="logout">🚪 Logout</a>
-
+<a class="logout">🚪 Logout</a>
 </aside>
 
-<!-- Main -->
-<div class="main"><div class="dashboard">
+<div class="main">
+<h1>Dashboard SIAPIS</h1>
 
-<div class="menu-card">
-<div class="icon">📘</div>
-<p>Latar Belakang</p>
+<div class="dashboard">
+<div class="menu-card"><div class="icon">📘</div><p>Latar Belakang</p></div>
+<div class="menu-card"><div class="icon">🎯</div><p>Visi & Misi</p></div>
+<div class="menu-card"><div class="icon">📝</div><p>PPDB</p></div>
+<div class="menu-card"><div class="icon">⚙️</div><p>Admin</p></div>
 </div>
 
-<div class="menu-card">
-<div class="icon">🎯</div>
-<p>Visi & Misi</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">📝</div>
-<p>PPDB</p>
-</div>
-
-<div class="menu-card">
-<div class="icon">⚙️</div>
-<p>Admin</p>
-</div>
-
-</div>
-
-<h1>SIAPIS</h1>
 <div class="card" id="contentArea">
 Silakan pilih menu di samping.
 </div>
-</div>
 
+</div>
 </div>
 
 <script>
 function showContent(id){
-
 let isi="";
-
 if(id==="latar"){
-isi=`
-<h2>Latar Belakang Sekolah</h2>
-<p>Sejarah Singkat dan Pendirian
-Pendidikan adalah hak fundamental bagi setiap warga negara, tanpa terkecuali. 
-Berangkat dari kesadaran mendalam akan pentingnya akses pendidikan yang setara bagi anak-anak berkebutuhan khusus di wilayah Kabupaten Alor, 
-SLB Negeri Alor resmi didirikan pada tahun 1984.
-
-Sejak awal berdirinya, sekolah ini menjadi pionir sekaligus mercusuar harapan bagi masyarakat di "Bumi Kenari" dalam memberikan layanan pendidikan khusus.
-Kehadirannya merupakan jawaban nyata atas tantangan geografis dan sosial dalam merangkul keberagaman kemampuan intelektual maupun fisik peserta didik..</p>
-`;
+isi="<h2>Latar Belakang</h2><p>Isi latar belakang sekolah...</p>";
 }
-
 else if(id==="visi"){
-isi=`
-<h2>Visi Sekolah</h2>
-<p>Terwujudnya peserta Didik yang cerdas , berimn, 
-bertaqwa kepada Tuhan yang Maha Esa , 
-berkarakter dan memiliki kecakapan .</p>
-`;
+isi="<h2>Visi Sekolah</h2><p>Isi visi sekolah...</p>";
 }
-
 else if(id==="misi"){
-isi=`
-<h2>Misi Sekolah</h2>
-<ul>
-<li>Membimbing dan mengarahkan murid baru untuk melaksanakan ibada sesuai perintah agama</li>
-<li>Melaksanakan kegiatan pembelajaran yang inovatif melalui pengembangan  dimensi lulusan dan tujuan gerakan anak indonesia hebat</li>
-<li>Melatih Murid dalam bidang akademik maupun non akademik untuk meraih prestasi
-</li>Menghasah potensi Murid dalam bidang teknologi melalui inovasi dan kolaborasi
-</li>Memfasilitasi SLB Negeri Alor sebagai pusat pengembangan talenta, bahasa, komunikasi bagi anak
-</li>Memupuk minat dan bakat Murid sesuai dengan kompetensi yang dimilikinya 
-</li>Membiasakan budaya peduli dan rasa empati terhadap lingkungan yang rama,sehat dan tertip
-</ul>
-`;
+isi="<h2>Misi Sekolah</h2><p>Isi misi sekolah...</p>";
 }
-
 else if(id==="tujuan"){
-isi=`
-<h2>Tujuan Sekolah</h2>
-<ul>
-<li>Meningkatkan kemandirian peserta didik</li>
-<li>Mengembangkan potensi siswa</li>
-<li>Menciptakan lingkungan belajar aman</li>
-</ul>
-`;
+isi="<h2>Tujuan Sekolah</h2><p>Isi tujuan sekolah...</p>";
 }
-
 else{
-isi="<h3>"+id+"</h3><p>Konten sedang disiapkan...</p>";
+isi="<h2>Dashboard</h2><p>Selamat datang di SIAPIS SLBN ALOR.</p>";
 }
-
 document.getElementById("contentArea").innerHTML=isi;
 }
-
 </script>
 
 </body>
