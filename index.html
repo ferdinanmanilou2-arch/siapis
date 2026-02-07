@@ -85,14 +85,53 @@ Silakan pilih menu di samping.
 </div>
 
 <script>
-function toggleSubmenu(id){
-document.getElementById(id).classList.toggle("show");
+function showContent(id){
+
+let isi="";
+
+if(id==="latar"){
+isi=`
+<h2>Latar Belakang Sekolah</h2>
+<p>SLB Negeri Alor didirikan untuk memberikan layanan pendidikan bagi peserta didik berkebutuhan khusus.</p>
+`;
 }
 
-function showContent(id){
-document.getElementById("contentArea").innerHTML =
-"<h3>"+id+"</h3><p>Konten sedang disiapkan...</p>";
+else if(id==="visi"){
+isi=`
+<h2>Visi Sekolah</h2>
+<p>Mewujudkan peserta didik berkebutuhan khusus yang mandiri dan berkarakter.</p>
+`;
 }
+
+else if(id==="misi"){
+isi=`
+<h2>Misi Sekolah</h2>
+<ul>
+<li>Pendidikan inklusif</li>
+<li>Pengembangan keterampilan hidup</li>
+<li>Pembinaan karakter</li>
+</ul>
+`;
+}
+
+else if(id==="tujuan"){
+isi=`
+<h2>Tujuan Sekolah</h2>
+<ul>
+<li>Meningkatkan kemandirian peserta didik</li>
+<li>Mengembangkan potensi siswa</li>
+<li>Menciptakan lingkungan belajar aman</li>
+</ul>
+`;
+}
+
+else{
+isi="<h3>"+id+"</h3><p>Konten sedang disiapkan...</p>";
+}
+
+document.getElementById("contentArea").innerHTML=isi;
+}
+
 </script>
 
 </body>
