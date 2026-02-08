@@ -94,25 +94,80 @@ Silakan pilih menu di samping.
 </div>
 
 <script>
+<script>
 function showContent(id){
+
 let isi="";
-if(id==="latar"){
-isi="<h2>Latar Belakang</h2><p>Isi latar belakang sekolah...</p>";
+
+if(id==="dashboard"){
+isi="<h2>🏠 Dashboard</h2><p>Selamat datang di SIAPIS SLBN ALOR.</p>";
 }
+
+else if(id==="latar"){
+isi="<h2>📘 Latar Belakang</h2><p>Isi latar belakang sekolah...</p>";
+}
+
 else if(id==="visi"){
-isi="<h2>Visi Sekolah</h2><p>Isi visi sekolah...</p>";
+isi="<h2>🎯 Visi Sekolah</h2><p>Isi visi sekolah...</p>";
 }
+
 else if(id==="misi"){
-isi="<h2>Misi Sekolah</h2><p>Isi misi sekolah...</p>";
+isi="<h2>🎯 Misi Sekolah</h2><p>Isi misi sekolah...</p>";
 }
+
 else if(id==="tujuan"){
-isi="<h2>Tujuan Sekolah</h2><p>Isi tujuan sekolah...</p>";
+isi="<h2>🏁 Tujuan Sekolah</h2><p>Isi tujuan sekolah...</p>";
 }
-else{
-isi="<h2>Dashboard</h2><p>Selamat datang di SIAPIS SLBN ALOR.</p>";
+
+else if(id==="guru"){
+isi="<h2>👩‍🏫 Data Guru</h2><p>Halaman data guru.</p>";
 }
+
+else if(id==="tendik"){
+isi="<h2>🧑‍💼 Data Tendik</h2><p>Halaman tenaga kependidikan.</p>";
+}
+
+else if(id==="siswa"){
+isi="<h2>👨‍🎓 Data Siswa</h2><p>Halaman data siswa.</p>";
+}
+
+else if(id==="bergerak"){
+isi="<h2>📦 Barang Bergerak</h2><p>Data sarana barang bergerak.</p>";
+}
+
+else if(id==="tidakbergerak"){
+isi="<h2>🏢 Barang Tidak Bergerak</h2><p>Data sarana tidak bergerak.</p>";
+}
+
+else if(id==="peserta"){
+isi="<h2>👶 Data Peserta PPDB</h2><p>Data peserta didik baru.</p>";
+}
+
+else if(id==="formulir"){
+isi="<h2>📄 Formulir PPDB</h2><p>Formulir pendaftaran siswa baru.</p>";
+}
+
+else if(id==="alur"){
+isi="<h2>➡️ Alur PPDB</h2><p>Alur proses pendaftaran.</p>";
+}
+
+else if(id==="suratmasuk"){
+isi="<h2>📥 Surat Masuk</h2><p>Data surat masuk sekolah.</p>";
+}
+
+else if(id==="suratkeluar"){
+isi="<h2>📤 Surat Keluar</h2><p>Data surat keluar sekolah.</p>";
+}
+
+else if(id==="user"){
+isi="<h2>👤 Manajemen User</h2><p>Pengaturan pengguna sistem.</p>";
+}
+
 document.getElementById("contentArea").innerHTML=isi;
+
 }
+</script>
+
 </script>
 
 </body>
