@@ -134,9 +134,8 @@ const file=document.getElementById("fileUpload").files[0];
 const storageRef=ref(storage,"dokumen/"+file.name);
 await uploadBytes(storageRef,file);
 alert("Upload berhasil 👍");
-}
-
-</script>showContent("dashboard");
+}showContent("dashboard");
+</script>
 
 </body>
 </html>
