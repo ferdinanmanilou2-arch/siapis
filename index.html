@@ -125,7 +125,33 @@ document.getElementById("contentArea").innerHTML=isi;
 }
 
 showContent("dashboard");
+</script><script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "APIKEY_KAMU",
+  authDomain: "siapis-a83c4.firebaseapp.com",
+  projectId: "siapis-a83c4",
+  storageBucket: "siapis-a83c4.appspot.com",
+  messagingSenderId: "938464817112",
+  appId: "APPID_KAMU"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.simpanGuru = async function(){
+await addDoc(collection(db,"guru"),{
+nama:"Tes Guru SLBN Alor",
+jabatan:"Operator"
+});
+alert("Data guru berhasil masuk database sekolah 👍");
+}
+
 </script>
+
 
 </body>
 </html>
