@@ -6,83 +6,33 @@
 <title>SIAPIS SLBN ALOR</title>
 
 <style>
-body { margin:0; font-family:Arial,sans-serif; background:#F3F4F6; }
-.container { display:flex; min-height:100vh; }
+body{margin:0;font-family:Arial;background:#F3F4F6;}
+.container{display:flex;min-height:100vh;}
 
-/* Sidebar */
-.sidebar { width:260px; background:#1E3A8A; color:white; padding:20px; }
-.sidebar h2 { text-align:center; margin-bottom:30px; }
-.sidebar a, .menu { display:block; padding:12px; margin-bottom:8px; color:white; text-decoration:none; border-radius:6px; cursor:pointer; }
-.sidebar a:hover, .menu:hover { background:#2563EB; }
-.submenu { display:none; margin-left:15px; }
-.submenu a { background:#1E40AF; font-size:14px; }
-.submenu.show { display:block; }
-.logout { background:#DC2626; text-align:center; }
-.logout:hover { background:#B91C1C; }
+.sidebar{width:260px;background:#1E3A8A;color:white;padding:20px;}
+.sidebar h2{text-align:center;margin-bottom:30px;}
+.sidebar a{display:block;padding:12px;margin-bottom:8px;color:white;text-decoration:none;border-radius:6px;cursor:pointer;}
+.sidebar a:hover{background:#2563EB;}
+.menu-title{margin-top:15px;font-size:13px;opacity:0.7;}
+.logout{background:#DC2626;text-align:center;}
+.logout:hover{background:#B91C1C;}
 
-/* Main */
-.main { flex:1; padding:30px; }
-.card { background:white; padding:20px; border-radius:10px; margin-top:20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+.main{flex:1;padding:30px;}
+.card{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
 
-/* Dashboard */
-.dashboard {.dashboard {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:20px;
-margin-top:20px;
-}
-
-.menu-card {
-background:white;
-border-radius:20px;
-text-align:center;
-padding:25px;
-box-shadow:0 4px 8px rgba(0,0,0,0.1);
-cursor:pointer;
-transition:0.3s;
-}
-
-.menu-card:hover {
-transform:translateY(-5px);
-}
-
-.icon {
-font-size:40px;
-margin-bottom:10px;
-}
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:20px;
-margin-top:20px;
-}
-
-.menu-card {
-background:white;
-border-radius:20px;
-text-align:center;
-padding:25px;
-box-shadow:0 4px 8px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.menu-card:hover {
-transform:translateY(-5px);
-}
-
-.icon {
-font-size:40px;
-margin-bottom:10px;
-}
+.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:20px;}
+.menu-card{background:white;border-radius:20px;text-align:center;padding:25px;box-shadow:0 4px 8px rgba(0,0,0,0.1);cursor:pointer;transition:0.3s;}
+.menu-card:hover{transform:translateY(-5px);}
+.icon{font-size:40px;margin-bottom:10px;}
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<aside class="sidebar"><h2>SIAPIS</h2>
+<aside class="sidebar">
+<h2>SIAPIS</h2>
 
 <a onclick="showContent('dashboard')">🏠 Dashboard</a>
 <a onclick="showContent('latar')">📘 Latar Belakang</a>
@@ -110,62 +60,71 @@ margin-bottom:10px;
 <a onclick="showContent('user')">👤 Manajemen User</a>
 
 <a class="logout">🚪 Logout</a>
+</aside>
 
-<div class="card" id="contentArea">
-Silakan pilih menu di samping.
+<main class="main">
+<div class="card" id="contentArea"></div>
+</main>
+
 </div>
 
-</div>
-</div>
-
-<script>
 <script>
 function showContent(id){
 
 let isi="";
 
 if(id==="dashboard"){
-if(id==="dashboard"){
 isi=`
 <h2>🏠 Dashboard SIAPIS</h2>
-
 <div class="dashboard">
 
 <div class="menu-card" onclick="showContent('guru')">
-<div class="icon">👩‍🏫</div>
-Data Guru
+<div class="icon">👩‍🏫</div>Data Guru
 </div>
 
 <div class="menu-card" onclick="showContent('siswa')">
-<div class="icon">👨‍🎓</div>
-Data Siswa
+<div class="icon">👨‍🎓</div>Data Siswa
 </div>
 
 <div class="menu-card" onclick="showContent('peserta')">
-<div class="icon">📝</div>
-PPDB
+<div class="icon">📝</div>PPDB
 </div>
 
 <div class="menu-card" onclick="showContent('bergerak')">
-<div class="icon">🏫</div>
-Sarana
+<div class="icon">🏫</div>Sarana
 </div>
 
 <div class="menu-card" onclick="showContent('suratmasuk')">
-<div class="icon">📥</div>
-Surat Masuk
+<div class="icon">📥</div>Surat Masuk
 </div>
 
 <div class="menu-card" onclick="showContent('user')">
-<div class="icon">⚙️</div>
-Admin
+<div class="icon">⚙️</div>Admin
 </div>
 
-</div>
-`;
+</div>`;
 }
-</script>
 
+else if(id==="guru"){ isi="<h2>👩‍🏫 Data Guru</h2>"; }
+else if(id==="tendik"){ isi="<h2>🧑‍💼 Data Tendik</h2>"; }
+else if(id==="siswa"){ isi="<h2>👨‍🎓 Data Siswa</h2>"; }
+else if(id==="bergerak"){ isi="<h2>📦 Barang Bergerak</h2>"; }
+else if(id==="tidakbergerak"){ isi="<h2>🏢 Barang Tidak Bergerak</h2>"; }
+else if(id==="peserta"){ isi="<h2>👶 Data Peserta PPDB</h2>"; }
+else if(id==="formulir"){ isi="<h2>📄 Formulir PPDB</h2>"; }
+else if(id==="alur"){ isi="<h2>➡️ Alur PPDB</h2>"; }
+else if(id==="suratmasuk"){ isi="<h2>📥 Surat Masuk</h2>"; }
+else if(id==="suratkeluar"){ isi="<h2>📤 Surat Keluar</h2>"; }
+else if(id==="user"){ isi="<h2>👤 Manajemen User</h2>"; }
+else if(id==="latar"){ isi="<h2>📘 Latar Belakang</h2>"; }
+else if(id==="visi"){ isi="<h2>🎯 Visi Sekolah</h2>"; }
+else if(id==="misi"){ isi="<h2>🎯 Misi Sekolah</h2>"; }
+else if(id==="tujuan"){ isi="<h2>🏁 Tujuan Sekolah</h2>"; }
+
+document.getElementById("contentArea").innerHTML=isi;
+}
+
+showContent("dashboard");
 </script>
 
 </body>
