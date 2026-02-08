@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SIAPIS SLBN ALOR</title>
 
 <style>
@@ -13,11 +13,12 @@ body{margin:0;font-family:Arial;background:#F3F4F6;}
 .sidebar a{display:block;padding:12px;margin-bottom:8px;color:white;text-decoration:none;border-radius:6px;cursor:pointer;}
 .sidebar a:hover{background:#2563EB;}
 .main{flex:1;padding:30px;}
-.card{background:white;padding:20px;border-radius:10px;margin-top:20px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
-.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;}
+.card{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:15px;}
 .menu-card{background:white;border-radius:20px;text-align:center;padding:25px;box-shadow:0 4px 8px rgba(0,0,0,0.1);cursor:pointer;}
 .icon{font-size:40px;margin-bottom:10px;}
-button{padding:10px 15px;border:none;border-radius:6px;background:#1E3A8A;color:white;cursor:pointer;margin-top:10px;}
+input{padding:8px;width:100%;margin-bottom:10px;}
+button{padding:10px 15px;border:none;border-radius:6px;background:#1E3A8A;color:white;cursor:pointer;}
 </style>
 </head>
 
@@ -27,22 +28,15 @@ button{padding:10px 15px;border:none;border-radius:6px;background:#1E3A8A;color:
 
 <aside class="sidebar">
 <h2>SIAPIS</h2>
-
+<a onclick="showContent('login')">🔐 Login Admin</a>
 <a onclick="showContent('dashboard')">🏠 Dashboard</a>
-<a onclick="showContent('latar')">📘 Latar Belakang</a>
-<a onclick="showContent('visi')">🎯 Visi</a>
-<a onclick="showContent('misi')">🎯 Misi</a>
-<a onclick="showContent('tujuan')">🏁 Tujuan</a>
 <a onclick="showContent('guru')">👩‍🏫 Data Guru</a>
 <a onclick="showContent('siswa')">👨‍🎓 Data Siswa</a>
-<a onclick="showContent('suratmasuk')">📥 Surat Masuk</a>
-
+<a onclick="showContent('surat')">📁 Upload Dokumen</a>
 </aside>
 
 <div class="main">
-<div class="card" id="contentArea">
-Selamat datang SIAPIS SLBN ALOR
-</div>
+<div id="contentArea" class="card">Selamat datang SIAPIS SLBN ALOR</div>
 </div>
 
 </div>
@@ -52,55 +46,41 @@ Selamat datang SIAPIS SLBN ALOR
 function showContent(id){
 let isi="";
 
-if(id==="dashboard"){
+if(id==="login"){
 isi=`
-<h2>🏠 Dashboard SIAPIS</h2>
+<h2>Login Admin</h2>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="loginAdmin()">Login</button>`;
+}
 
-<button onclick="simpanGuru()">Tes Simpan Guru ke Database</button>
-
+else if(id==="dashboard"){
+isi=`
+<h2>Dashboard SIAPIS</h2>
 <div class="dashboard">
-
-<div class="menu-card" onclick="showContent('guru')">
-<div class="icon">👩‍🏫</div>Data Guru
-</div>
-
-<div class="menu-card" onclick="showContent('siswa')">
-<div class="icon">👨‍🎓</div>Data Siswa
-</div>
-
-<div class="menu-card" onclick="showContent('suratmasuk')">
-<div class="icon">📥</div>Surat Masuk
-</div>
-
+<div class="menu-card" onclick="showContent('guru')"><div class="icon">👩‍🏫</div>Data Guru</div>
+<div class="menu-card" onclick="showContent('siswa')"><div class="icon">👨‍🎓</div>Data Siswa</div>
+<div class="menu-card" onclick="showContent('surat')"><div class="icon">📁</div>Upload</div>
 </div>`;
 }
 
 else if(id==="guru"){
-isi="<h2>Data Guru</h2><p>Halaman input data guru sekolah.</p>";
+isi=`
+<h2>Input Data Guru</h2>
+<input id="namaGuru" placeholder="Nama Guru">
+<input id="jabatanGuru" placeholder="Jabatan">
+<button onclick="tambahGuru()">Simpan Guru</button>`;
 }
 
 else if(id==="siswa"){
-isi="<h2>Data Siswa</h2><p>Halaman input data siswa.</p>";
+isi="<h2>Data Siswa</h2>";
 }
 
-else if(id==="latar"){
-isi="<h2>Latar Belakang</h2>";
-}
-
-else if(id==="visi"){
-isi="<h2>Visi Sekolah</h2>";
-}
-
-else if(id==="misi"){
-isi="<h2>Misi Sekolah</h2>";
-}
-
-else if(id==="tujuan"){
-isi="<h2>Tujuan Sekolah</h2>";
-}
-
-else if(id==="suratmasuk"){
-isi="<h2>Surat Masuk</h2>";
+else if(id==="surat"){
+isi=`
+<h2>Upload Dokumen Sekolah</h2>
+<input type="file" id="fileUpload">
+<button onclick="uploadFile()">Upload File</button>`;
 }
 
 document.getElementById("contentArea").innerHTML=isi;
@@ -108,30 +88,52 @@ document.getElementById("contentArea").innerHTML=isi;
 
 </script>
 
-<!-- FIREBASE -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore,collection,addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore,collection,addDoc }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const firebaseConfig = {
+import { getAuth,signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import { getStorage,ref,uploadBytes }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+const firebaseConfig={
 apiKey:"APIKEY_KAMU",
 authDomain:"PROJECTID_KAMU.firebaseapp.com",
 projectId:"PROJECTID_KAMU",
 storageBucket:"PROJECTID_KAMU.appspot.com",
-messagingSenderId:"XXXX",
+messagingSenderId:"MESSAGINGSENDERID_KAMU",
 appId:"APPID_KAMU"
 };
 
 const app=initializeApp(firebaseConfig);
 const db=getFirestore(app);
+const auth=getAuth(app);
+const storage=getStorage(app);
 
-window.simpanGuru=async function(){
-await addDoc(collection(db,"guru"),{
-nama:"Guru SLBN ALOR",
-jabatan:"Operator"
-});
-alert("Data berhasil masuk database 👍");
+window.loginAdmin=async function(){
+const email=document.getElementById("email").value;
+const password=document.getElementById("password").value;
+await signInWithEmailAndPassword(auth,email,password);
+alert("Login berhasil 👍");
+showContent("dashboard");
+}
+
+window.tambahGuru=async function(){
+const nama=document.getElementById("namaGuru").value;
+const jabatan=document.getElementById("jabatanGuru").value;
+await addDoc(collection(db,"guru"),{nama,jabatan});
+alert("Guru tersimpan 👍");
+}
+
+window.uploadFile=async function(){
+const file=document.getElementById("fileUpload").files[0];
+const storageRef=ref(storage,"dokumen/"+file.name);
+await uploadBytes(storageRef,file);
+alert("Upload berhasil 👍");
 }
 
 </script>
